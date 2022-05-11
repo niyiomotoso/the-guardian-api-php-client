@@ -84,7 +84,7 @@ hour_array=(500 240 400 900 300)
 hour_array_length=${#hour_array[@]}
 
 
-while [ $counter -le 3 ]
+while [ $counter -le 2 ]
  do
       commit_counter=0
       commit_count_array=(0 2 5 3 0 1 0 1 2 4)
@@ -99,7 +99,7 @@ while [ $counter -le 3 ]
           # Get the element at the random index
           random_element="${my_array[random_index]}"
 
-           dateUsed=$(gdate -d "2022-04-02 $random_hour_element hours $mn minutes $sc seconds" "+%a %b %d %H:%M:%S %Y %z")
+           dateUsed=$(gdate -d "2022-05-12 $random_hour_element hours $mn minutes $sc seconds" "+%a %b %d %H:%M:%S %Y %z")
            echo $dateUsed > contract.md
            git add .
            git commit -m "$random_element"
@@ -112,7 +112,7 @@ while [ $counter -le 3 ]
            commit_counter=$(($commit_counter + 1))
        done
 
-  git push origin main -f
+  git push origin master -f
 
   counter=$(($counter + 1))
 
