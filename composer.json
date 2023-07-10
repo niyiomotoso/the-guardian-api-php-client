@@ -1,0 +1,36 @@
+{
+    "name": "kingdageek/the-guardian-client",
+    "description": "PHP wrapper for the guardian APIs",
+    "keywords": ["The Guardian", "API", "wrapper"],
+    "homepage": "https://github.com/niyiomotoso/the-guardian-api-php-client",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nonso Mgbechi",
+            "email": "mgbechinonso@gmail.com",
+            "homepage": "https://kingdageek.github.io"
+        },
+        {
+            "name": "Omoniyi Omotoso",
+            "email": "omoniyiomotoso@gmail.com",
+            "homepage": "https://niyiomotoso.github.io"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Guardian\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Guardian\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    }
+}
