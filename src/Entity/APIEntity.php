@@ -23,10 +23,10 @@ abstract class APIEntity
     private $client;
 
     /**
-     * Construct from set parameters and return valid URL for requests
+     * Constructs valid request URL from set parameters
      * @return string Valid URL from set parameters
      */
-    protected abstract function getUrl();
+    protected abstract function buildUrl();
 
     /**
      * Creates instance of Guardian\Entity\APIEntity
@@ -46,7 +46,7 @@ abstract class APIEntity
      */
     public final function fetch(bool $asArray = false)
     {
-        $url = $this->getUrl();
+        $url = $this->buildUrl();
         $headers = [
             "Accept" => "application/json"
         ];
