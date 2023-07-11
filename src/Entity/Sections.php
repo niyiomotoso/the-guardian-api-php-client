@@ -21,11 +21,13 @@ class Sections extends APIEntity
      */
     public function buildUrl()
     {
-        $url = $this->baseUrl;
+        // $url = $this->baseUrl;
 
-        if (!empty($this->query)) {
-            $url = $url . "&q=" . $this->query;
-        }
-        return $url;
+        // if (!empty($this->query)) {
+        //     $url = $url . "&q=" . $this->query;
+        // }
+        // return $url;
+        $this->appendToBaseUrl("q", $this->query);
+        return $this->baseUrl;
     }
 }

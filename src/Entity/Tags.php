@@ -98,36 +98,15 @@ class Tags extends PageAPIEntity
 
     public function buildUrl()
     {
-        $url = $this->baseUrl . "&page=" . $this->page . 
-        "&page-size=" . $this->pageSize;
-        if(!empty($this->query)) {
-            $url = $url . "&q=" . $this->query;
-        }
-
-        if(!empty($this->webTitle)) {
-            $url = $url . "&web-title=" . $this->webTitle;
-        }
-
-        if(!empty($this->type)) {
-            $url = $url . "&type=" . $this->type;
-        }
-
-        if(!empty($this->section)) {
-            $url = $url . "&section=" . $this->section;
-        }
-
-        if(!empty($this->reference)) {
-            $url = $url . "&reference=" . $this->reference;
-        }
-
-        if(!empty($this->referenceType)) {
-            $url = $url . "&reference-type=" . $this->referenceType;
-        }
-
-        if(!empty($this->showReferences)) {
-            $url = $url . "&show-references=" . $this->showReferences;
-        }
-
-        return $url;
+        $this->appendToBaseUrl("page", $this->page)
+            ->appendToBaseUrl("page-size", $this->pageSize)
+            ->appendToBaseUrl("q", $this->query)
+            ->appendToBaseUrl("web-title", $this->webTitle)
+            ->appendToBaseUrl("type", $this->type)
+            ->appendToBaseUrl("section", $this->section)
+            ->appendToBaseUrl("reference", $this->reference)
+            ->appendToBaseUrl("reference-type", $this->referenceType)
+            ->appendToBaseUrl("show-references", $this->showReferences);
+        return $this->baseUrl;
     }
 }

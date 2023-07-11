@@ -67,4 +67,20 @@ abstract class APIEntity
         $this->query = $query;
         return $this;
     }
+
+    /**
+     * Helps to build request URLs. Appends set request parameters to the URL
+     * @param string $attributeName Request parameter according to the guardian API docs
+     * @param mixed $attributeValue Value the parameter is set to. This is typically an int or a string
+     * @return self API entity with updated `baseUrl`
+     */
+    protected function appendToBaseUrl(string $attributeName, $attributeValue)
+    {
+        $url = "";
+        if(!empty($attributeValue)) {
+            $url = "&". $attributeName . "=" . $attributeValue;
+        }
+        $this->baseUrl = $this->baseUrl . $url;
+        return $this;
+    }
 }
