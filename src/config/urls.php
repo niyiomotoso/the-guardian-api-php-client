@@ -4,6 +4,6 @@ return [
     "content" => "$baseUrl/search",
     "tags" => "$baseUrl/tags",
     "sections" => "$baseUrl/sections",
-    "singleContent" => $baseUrl,
+    "singleItem" => $baseUrl,
     "editions" => "$baseUrl/editions"
 ];

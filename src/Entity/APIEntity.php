@@ -1,5 +1,4 @@
 <?php
-
 namespace Guardian\Entity;
 
 use GuzzleHttp\Client;
@@ -26,7 +25,7 @@ abstract class APIEntity
      * Constructs valid request URL from set parameters
      * @return string Valid URL from set parameters
      */
-    protected abstract function buildUrl();
+    abstract protected function buildUrl();
 
     /**
      * Creates instance of Guardian\Entity\APIEntity
@@ -44,7 +43,7 @@ abstract class APIEntity
      * @param bool $asArray Specifies if response should be returned as a PHP object or an associative array
      * @return object|array
      */
-    public final function fetch(bool $asArray = false)
+    final public function fetch(bool $asArray = false)
     {
         $url = $this->buildUrl();
         $headers = [
@@ -58,17 +57,6 @@ abstract class APIEntity
     }
 
     /**
-     * Sets the `query` attribute for this API entity
-     * @param string $query Free text to search for
-     * @return self The object this was set on
-     */
-    public function setQuery(string $query)
-    {
-        $this->query = $query;
-        return $this;
-    }
-
-    /**
      * Helps to build request URLs. Appends set request parameters to the URL
      * @param string $attributeName Request parameter according to the guardian API docs
      * @param mixed $attributeValue Value the parameter is set to. This is typically an int or a string
@@ -76,11 +64,10 @@ abstract class APIEntity
      */
     protected function appendToBaseUrl(string $attributeName, $attributeValue)
     {
-        $url = "";
-        if(!empty($attributeValue)) {
+        if (!empty($attributeValue)) {
             $url = "&". $attributeName . "=" . $attributeValue;
+            $this->baseUrl = $this->baseUrl . $url;
         }
-        $this->baseUrl = $this->baseUrl . $url;
         return $this;
     }
 }

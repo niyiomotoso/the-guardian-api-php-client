@@ -1,12 +1,13 @@
 <?php
-
 namespace Guardian;
 
 use Guardian\Entity\Content;
+use Guardian\Entity\SingleItem;
 use Guardian\Entity\Editions;
 use Guardian\Entity\Sections;
 use Guardian\Entity\Tags;
 use InvalidArgumentException;
+
 /**
  * Class GuardianAPI
  * 
@@ -49,9 +50,18 @@ class GuardianAPI
      */
     public function content()
     {
-        // distinguish btw single and multiple contents
         $baseUrl = $this->urls['content'] . "?api-key=" . $this->apiKey;
         return new Content($baseUrl);
+    }
+
+    /**
+     * Object factory for class Guardian\Entity\SingleItem to fetch single items
+     * @return SingleItem
+     */
+    public function singleItem()
+    {
+        $baseUrl = $this->urls['singleItem'];
+        return new SingleItem($baseUrl, $this->apiKey);
     }
 
     /**

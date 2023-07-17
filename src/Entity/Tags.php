@@ -1,5 +1,4 @@
 <?php
-
 namespace Guardian\Entity;
 
 /**
@@ -9,17 +8,12 @@ namespace Guardian\Entity;
  * 
  * @package Guardian\Entity
  */
-class Tags extends PageAPIEntity
+class Tags extends PageAndReferenceAPIEntity
 {
     // query term
     private $webTitle;
     // filters
     private $type;
-    private $section;
-    private $reference;
-    private $referenceType;
-    // additional information
-    private $showReferences;
 
     /**
      * Sets `web-title`: free text every fetched tag will start from
@@ -43,60 +37,18 @@ class Tags extends PageAPIEntity
         return $this;
     }
 
-     /**
-     * Sets `section(s)` to return only tags in the sections.
-     * `section` supports boolean operators - ',' for AND. '|' for OR. '-' for NOT.
-     * Valid section strings: "business,sports", "business", "business|sports"
-     * @param string $section
-     * @return self
-     */
-    public function setSection(string $section)
-    {
-        $this->section = $section;
-        return $this;
-    }
-
-     /**
-     * Sets `reference(s)` to return only tags with those references
-     * `reference` supports boolean operators - ',' for AND. '|' for OR. '-' for NOT.
-     * Valid reference strings: "isbn/9780349108391", "isbn/9780349108391,isbn/9780XXXXXXX"
-     * @param string $reference
-     * @return self
-     */
-    public function setReference(string $reference)
-    {
-        $this->reference = $reference;
-        return $this;
-    }
-
     /**
-     * Sets `reference-type(s)` to return only tags with references of those types
-     * `reference` supports boolean operators - ',' for AND. '|' for OR. '-' for NOT.
-     * @param string $referenceType
-     * @return self
+     * Sets the `query` attribute for this API entity
+     * @param string $query Free text to search for
+     * @return self The object this was set on
      */
-    public function setReferenceType(string $referenceType)
+    public function setQuery(string $query)
     {
-        $this->referenceType = $referenceType;
+        $this->query = $query;
         return $this;
     }
 
-    /**
-     * Sets `show-references` field to specify if the associated reference data like ISBNs
-     * for the fetched tags is to be shown.
-     * `show-references` is a string list. 
-     * See https://open-platform.theguardian.com/documentation/tag
-     * for valid entries for this list
-     * @param string $showReferences
-     * @return self
-     */
-    public function setShowReferences(string $showReferences)
-    {
-        $this->showReferences = $showReferences;
-        return $this;
-    }
-
-    public function buildUrl()
+    protected function buildUrl()
     {
         $this->appendToBaseUrl("page", $this->page)
             ->appendToBaseUrl("page-size", $this->pageSize)
