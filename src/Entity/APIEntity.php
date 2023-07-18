@@ -65,8 +65,8 @@ abstract class APIEntity
     protected function appendToBaseUrl(string $attributeName, $attributeValue)
     {
         if (!empty($attributeValue)) {
-            $url = "&". $attributeName . "=" . $attributeValue;
-            $this->baseUrl = $this->baseUrl . $url;
+            $url = "&{$attributeName}={$attributeValue}";
+            $this->baseUrl = "{$this->baseUrl}{$url}";
         }
         return $this;
     }
