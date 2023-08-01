@@ -1,6 +1,7 @@
 <?php
 namespace Guardian;
 
+use Guardian\Config\Urls;
 use Guardian\Entity\Content;
 use Guardian\Entity\SingleItem;
 use Guardian\Entity\Editions;
@@ -10,9 +11,9 @@ use InvalidArgumentException;
 
 /**
  * Class GuardianAPI
- * 
+ *
  * The main class for API consumption
- * 
+ *
  * @package Guardian
  */
 class GuardianAPI
@@ -31,7 +32,7 @@ class GuardianAPI
     public function __construct(string $apiKey)
     {
         $this->apiKey = $this->validateApiKey($apiKey);
-        $this->urls = require_once __DIR__ . '/config/urls.php';
+        $this->urls =  Urls::URL_MAP;
     }
 
     /**

@@ -6,3 +6,5 @@ phpcs.xml
 phpunit.xml
 .idea/
 .phpunit.result.cache
+.DS_Store
+src/.DS_Store
