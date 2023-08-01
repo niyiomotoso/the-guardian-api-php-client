@@ -3,9 +3,9 @@ namespace Guardian\Entity;
 
 /**
  * Class Content
- * 
+ *
  * The content guardian API entity
- * 
+ *
  * @package Guardian\Entity
  */
 class Content extends ContentAPIEntity

@@ -5,9 +5,9 @@ use GuzzleHttp\Client;
 
 /**
  * Class APIEntity
- * 
+ *
  * Base class for all available guardian API entities
- * 
+ *
  * @package Guardian\Entity
  */
 abstract class APIEntity
@@ -46,14 +46,21 @@ abstract class APIEntity
     final public function fetch(bool $asArray = false)
     {
         $url = $this->buildUrl();
+        $jsonResult = $this->makeApiCall($url);
+
+        return json_decode($jsonResult, $asArray);
+    }
+
+    public function makeApiCall(string $url): string
+    {
         $headers = [
             "Accept" => "application/json"
         ];
         $response = $this->client->request('GET', $url, [
             'headers' => $headers
         ]);
-        $result = $response->getBody()->getContents();
-        return json_decode($result, $asArray);
+
+        return $response->getBody()->getContents();
     }
 
     /**
