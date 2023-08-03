@@ -3,6 +3,14 @@
 PHP client library for the Guardian APIs. See documentation [here](https://open-platform.theguardian.com/documentation/).
 All available API modules are supported - Content, Tags, Sections, Editions, and Single Item.
 
+
+### Installation
+
+You can install this package with composer using the command below
+```shell
+ composer require nonsoniyi/the-guardian-api-client
+```
+
 ### Get API key
 
 Sign up for an API key [here](https://open-platform.theguardian.com/access)
