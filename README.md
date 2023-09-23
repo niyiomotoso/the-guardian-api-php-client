@@ -66,3 +66,5 @@ $response = $api->singleItem()
     ->setShowRelated(true)
     ->fetch();
 ```
+### Community support
+You can reach out to us on the Google Group here https://groups.google.com/g/guardian-api-talk for support 
